@@ -1,6 +1,6 @@
 import React from 'react';
 
-import 'rsuite/styles/index.less';
+import 'rsuite/dist/styles/rsuite-default.css';
 import './styles/main.scss';
 
 function App() {
