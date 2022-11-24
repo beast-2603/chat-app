@@ -14,7 +14,7 @@ const Sidebar = () => {
     }
   }, [topSidebarRef]);
   return (
-    <div className="h-100 pt-2">
+    <div className="h-100 pt-1">
       <div ref={topSidebarRef}>
         <DashboardToggle />
         <CreateRoomBtnModal />
