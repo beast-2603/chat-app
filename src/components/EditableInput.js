@@ -34,6 +34,13 @@ const EditableInput = ({
 
     setIsEditable(false);
   };
+
+  const onKeyDown = ev => {
+    if (ev.keyCode === 13) {
+      ev.preventDefault();
+      onSaveClick();
+    }
+  };
   return (
     <div>
       {label}
@@ -44,6 +51,7 @@ const EditableInput = ({
           placeholder={placeholder}
           value={input}
           onChange={onInputChange}
+          onKeyDown={onKeyDown}
         />
         <InputGroup.Button onClick={onEditClick}>
           <Icon icon={isEditable ? 'close' : 'edit2'} />

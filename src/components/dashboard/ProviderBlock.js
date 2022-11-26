@@ -74,7 +74,7 @@ const ProviderBlock = () => {
         </Tag>
       )}
 
-      <div className="mt-2">
+      <div className="mt-1">
         {!isConnected['google.com'] && (
           <Button block color="green" onClick={linkGoogle}>
             <Icon icon="google" /> Link to Google

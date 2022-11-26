@@ -28,7 +28,7 @@ const Home = () => {
               </Col>
             </Route>
             <Route>
-              <Col xs={24} md={16} className="h-100">
+              <Col xs={24} md={16} className={isDesktop ? 'h-100' : 'd-none'}>
                 <h6 className="text-center mt-page">Please Select Chat</h6>
               </Col>
             </Route>
