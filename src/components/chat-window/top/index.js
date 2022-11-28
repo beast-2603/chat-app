@@ -1,9 +1,11 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { ButtonToolbar, Icon } from 'rsuite';
+import { Icon, Dropdown } from 'rsuite';
+import MoreIcon from '@rsuite/icons/More';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useMediaQuery } from '../../../misc/custom-hooks';
-import RoomInfoBtnModal from './RoomInfoBtnModal';
+import EditRoomBtnModal from './EditRoomBtnModal';
+import RoomInfoBtnDrawer from './RoomInfoBtnDrawer';
 
 const ChatTop = () => {
   const name = useCurrentRoom(v => v.name);
@@ -27,11 +29,10 @@ const ChatTop = () => {
           />
           <span className="text-disappear"> {name}</span>
         </h4>
-        <ButtonToolbar className="ws-no-wrap">todo</ButtonToolbar>
-      </div>
-      <div className="d-flex justify-content-between align-items-center">
-        <span>todo</span>
-        <RoomInfoBtnModal />
+        <div>
+          <RoomInfoBtnDrawer />
+          <EditRoomBtnModal />
+        </div>
       </div>
     </div>
   );

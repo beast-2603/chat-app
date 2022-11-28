@@ -1,6 +1,7 @@
 import React from 'react';
 import TimeAgo from 'timeago-react';
 import ProfileAvatar from '../dashboard/ProfileAvatar';
+import PresenceDot from '../PresenceDot';
 
 const RoomItem = ({ room }) => {
   const { createdAt, name, lastMessage } = room;
@@ -26,7 +27,10 @@ const RoomItem = ({ room }) => {
               />
             </div>
             <div className="text-disappear ml-2">
-              <div className="italic">{lastMessage.author.name}</div>
+              <div className="italic">
+                {lastMessage.author.name}{' '}
+                <PresenceDot uid={lastMessage.author.uid} />
+              </div>
               <span>{lastMessage.text}</span>
             </div>
           </>

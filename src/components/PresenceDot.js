@@ -24,7 +24,11 @@ const getText = presence => {
 
   return presence.state === 'online'
     ? 'Online'
-    : `Last Online ${new Date(presence.last_changed).toLocaleDateString()}`;
+    : `Last Online: (${new Date(
+        presence.last_changed
+      ).toLocaleTimeString()}) -- ${new Date(
+        presence.last_changed
+      ).toLocaleDateString()}`;
 };
 
 const PresenceDot = ({ uid }) => {
