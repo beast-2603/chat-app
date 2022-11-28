@@ -1,5 +1,6 @@
 import React from 'react';
 import TimeAgo from 'timeago-react';
+import PresenceDot from '../../PresenceDot';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 
 const MessageItem = ({ message }) => {
@@ -8,6 +9,7 @@ const MessageItem = ({ message }) => {
   return (
     <li className="padded mb-1">
       <div className="d-flex align-items-center font-bolder mb-1">
+        <PresenceDot uid={author.uid} />
         <ProfileInfoBtnModal profile={author} appearance="subtle" />
         <TimeAgo
           datetime={createdAt}
