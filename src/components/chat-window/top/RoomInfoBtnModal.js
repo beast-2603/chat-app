@@ -5,6 +5,7 @@ import { useModalState } from '../../../misc/custom-hooks';
 import { database } from '../../../misc/Firebase';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import EditableInput from '../../EditableInput';
+import EditableTextArea from '../../EditableTextArea';
 
 const RoomInfoBtnModal = () => {
   const description = useCurrentRoom(v => v.description);
@@ -15,7 +16,7 @@ const RoomInfoBtnModal = () => {
   const onSaveRoomName = async newData => {
     try {
       database.ref(`/rooms/${roomId}`).child('name').set(newData);
-      Alert.success('RoomName has been Updated', 4000);
+      Alert.success('Room-Name has been Updated', 4000);
     } catch (err) {
       Alert.error(err.message, 4000);
     }
@@ -46,7 +47,7 @@ const RoomInfoBtnModal = () => {
             onSave={onSaveRoomName}
           />
           <h6 className="mt-2 mb-2">Description:</h6>
-          <EditableInput
+          <EditableTextArea
             name="Room-Description"
             initialValue={description}
             onSave={onSaveDescription}
