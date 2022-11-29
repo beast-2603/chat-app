@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon, Dropdown } from 'rsuite';
-import MoreIcon from '@rsuite/icons/More';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useMediaQuery } from '../../../misc/custom-hooks';
 import EditRoomBtnModal from './EditRoomBtnModal';
@@ -9,6 +8,8 @@ import RoomInfoBtnDrawer from './RoomInfoBtnDrawer';
 
 const ChatTop = () => {
   const name = useCurrentRoom(v => v.name);
+
+  const isAdmin = useCurrentRoom(v => v.isAdmin);
 
   const isMobile = useMediaQuery('(max-width: 992px)');
 
@@ -31,7 +32,7 @@ const ChatTop = () => {
         </h4>
         <div>
           <RoomInfoBtnDrawer />
-          <EditRoomBtnModal />
+          {isAdmin && <EditRoomBtnModal />}
         </div>
       </div>
     </div>
