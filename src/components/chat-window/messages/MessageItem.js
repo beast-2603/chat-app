@@ -1,5 +1,6 @@
+import { More } from '@rsuite/icons';
 import React from 'react';
-import { Button } from 'rsuite';
+import { Button, Dropdown } from 'rsuite';
 import TimeAgo from 'timeago-react';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useMediaQuery, useHover } from '../../../misc/custom-hooks';
@@ -8,7 +9,7 @@ import PresenceDot from '../../PresenceDot';
 import IconBtnControl from './IconBtnControl';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 
-const MessageItem = ({ message, handleAdmin, handleLike }) => {
+const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
   const { author, createdAt, text, likes, likeCount } = message;
 
   const [selfRef, isHovered] = useHover();
@@ -64,8 +65,17 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
           onClick={() => handleLike(message.id)}
           badgeContent={likeCount}
         />
+        {isAuthor && (
+          <IconBtnControl
+            {...{ color: 'blue' }}
+            isVisible={canShowIcons}
+            iconName="trash"
+            tooltip="Delete This Message"
+            onClick={() => handleDelete(message.id)}
+            className="ml-2"
+          />
+        )}
       </div>
-
       <div>
         <span className="word-break-all">{text}</span>
       </div>
