@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { database } from './Firebase';
 
 export function useModalState(defaultValue = false) {
@@ -47,4 +47,27 @@ export function usePresence(uid) {
   }, [uid]);
 
   return presence;
+}
+
+export function useHover() {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const elementRef = useRef(null);
+
+  const handleMouseOver = () => setIsHovered(true);
+  const handleMouseOut = () => setIsHovered(false);
+
+  useEffect(() => {
+    const node = elementRef.current;
+    if (node) {
+      node.addEventListener('mouseover', handleMouseOver);
+      node.addEventListener('mouseout', handleMouseOut);
+    }
+    return () => {
+      node.removeEventListener('mouseover', handleMouseOver);
+      node.removeEventListener('mouseout', handleMouseOut);
+    };
+  }, [elementRef.current]);
+
+  return [elementRef, isHovered];
 }
