@@ -31,7 +31,7 @@ const RoomItem = ({ room }) => {
                 {lastMessage.author.name}{' '}
                 <PresenceDot uid={lastMessage.author.uid} />
               </div>
-              <span>{lastMessage.text}</span>
+              <span>{lastMessage.text || lastMessage.file.name}</span>
             </div>
           </>
         ) : (
