@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import { useProfile } from '../../../context/profile.context';
 import { database } from '../../../misc/Firebase';
 import AttachmentBtnModal from './AttachmentBtnModal';
+import AudioMsgBtn from './AudioMsgBtn';
 
 function assembleMessage(profile, chatId) {
   return {
@@ -21,7 +22,7 @@ function assembleMessage(profile, chatId) {
 }
 
 const ChatBottom = () => {
-  const [input, setInput] = useState();
+  const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const { chatId } = useParams();
@@ -56,8 +57,8 @@ const ChatBottom = () => {
       setInput('');
       setIsLoading(false);
     } catch (err) {
-      Alert.error(err.message, 4000);
       setIsLoading(false);
+      Alert.error(err.message, 4000);
     }
   };
 
@@ -105,6 +106,7 @@ const ChatBottom = () => {
     <div>
       <InputGroup>
         <AttachmentBtnModal afterUpload={afterUpload} />
+        <AudioMsgBtn afterUpload={afterUpload} />
         <Input
           placeholder="Write a new message here..."
           value={input}
