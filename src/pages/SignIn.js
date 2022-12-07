@@ -3,6 +3,7 @@ import { Alert, Button, Col, Container, Grid, Icon, Panel, Row } from 'rsuite';
 import firebase from 'firebase/compat/app';
 import { auth, database } from '../misc/Firebase';
 import '../styles/utility.scss';
+import BG from '../images/signin-bg.jpg';
 
 const SignIn = () => {
   const SignInWithProvider = async provider => {
@@ -30,13 +31,18 @@ const SignIn = () => {
   };
 
   return (
-    <Container>
+    <Container
+      style={{
+        background: `url(${BG}) no-repeat fixed center`,
+        backgroundSize: 'cover',
+      }}
+    >
       <Grid className="mt-page">
         <Row>
           <Col xs={24} md={12} mdOffset={6}>
             <Panel>
-              <div className="text-center">
-                <h2>Welcome to Chat</h2>
+              <div className="text-center text-black-70">
+                <h2>Welcome to Talkito</h2>
                 <p>Progressive Chat Platform For All</p>
               </div>
 
